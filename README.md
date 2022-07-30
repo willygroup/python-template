@@ -5,12 +5,16 @@ Description
 ### Linux
 #### To create the python envirnoment:
 ```bash
-$ source create_python_venv_linux.sh
+$ source ./scripts/create_python_venv_linux.sh
 ```
 
 #### To activate the python environment
 ```bash
 $ source .linux_env/bin/activate
+```
+or
+```bash
+$ source scripts/activate_linux_venv.sh
 ```
 
 #### To deactivate the python environment
@@ -27,12 +31,12 @@ $ python main.py
 ### Windows Powershell
 #### To create the python envirnoment:
 ```shell
-$ .\create_python_venv_win.sh
+$ .\scripts\create_python_venv_win.sh
 ```
 
 #### To activate the python environment
 ```shell
-$ .\activate_win_venv.ps1
+$ .\scripta\activate_win_venv.ps1
 ```
 
 #### To deactivate the python environment
@@ -47,8 +51,9 @@ $ python main.py
 ```
 
 #### Create a Windows executable
+# TODO check on this
 ```shell
-$ .\create_exe.ps1
+$ .\scriptas\create_exe.ps1
 ```
 
 ## Software Requirements
