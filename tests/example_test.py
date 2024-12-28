@@ -1,5 +1,4 @@
 import unittest
-import os
 
 # pylint: disable=import-error
 from commons import prepare_env, restore_env
@@ -9,10 +8,6 @@ from modules.example_mod import Example
 
 
 class TestExampleModule(unittest.TestCase):
-    def get_dirname(self) -> str:
-        dirname = os.path.realpath(__file__)
-        dirname = os.path.split(dirname)[0]
-        return dirname
 
     def test_init_example_without_args(self):
 
