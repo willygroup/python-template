@@ -1,10 +1,8 @@
 import unittest
 import os
 
-# pylint: disable=import-error
 from commons import prepare_env, restore_env
 
-# pylint: disable=import-error
 from modules.example_mod import Example
 
 
