@@ -1,1 +1,1 @@
-Remove-Item '.\dist\' -Recurse -ErrorAction Ignore && pyinstaller.exe --onedir --noconsol .\main.py 
+pyinstaller.exe my-app.spec

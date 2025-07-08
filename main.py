@@ -6,45 +6,41 @@ MyProject Description
 import gettext
 import locale
 import logging
-import os
 import sys
 
+from modules.paths import Paths
+from modules import __project_name__
 
-__project_name__ = "myproject"
 
-if getattr(sys, "frozen", False):
-    # If the application is run as a bundle, the PyInstaller bootloader
-    # extends the sys module by a flag frozen=True and sets the app
-    # path into variable _MEIPASS'.
-    dirname = sys._MEIPASS
+CURRENT_LOCALE, _ = locale.getlocale()
+if CURRENT_LOCALE == "Italian_Italy":
+    CURRENT_LOCALE = "it_IT"
 else:
-    dirname = os.path.dirname(os.path.abspath(__file__))
-
-
-current_locale, _ = locale.getlocale()
-if current_locale == "Italian_Italy":
-    current_locale = "it_IT"
-locale_path = os.path.join("files", "locale")
-dictionary = gettext.translation("main", locale_path, [current_locale])
+    CURRENT_LOCALE = "en_US"
+locale_path = Paths.locales
+dictionary = gettext.translation("main", locale_path, [CURRENT_LOCALE])
 dictionary.install()
 _ = dictionary.gettext
 
 
-def main():
+def init_logger():
+    FORMAT = "%(asctime)-15s `%(name)s` => '%(message)s'"
+    log_file = Paths.file(f"{__project_name__}.log")
+    logging.basicConfig(filename=log_file, level=logging.INFO, format=FORMAT)
+    return logging.getLogger("main")
+
+
+def main(m_logger):
+    '''Main function'''
+    m_logger.info("Done!")
     print("Done!")
-    pass
 
 
 if __name__ == "__main__":
-
-    FORMAT = "%(asctime)-15s `%(name)s` => '%(message)s'"
-    log_file = os.path.join("files", f"{__project_name__}.log")
-    logging.basicConfig(filename=log_file, level=logging.INFO, format=FORMAT)
-    logger = logging.getLogger("main")
-
+    logger = init_logger()
     logger.info("App Started")
 
-    main()
+    main(logger)
 
     logger.info("App Closed")
 
